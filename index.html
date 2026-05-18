@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Whisper AI | Soft Intelligence That Listens</title>
-    <meta name="description" content="Whisper AI brings soft, listening intelligence to your world. Gentle, intuitive, and beautifully human — like a quiet whisper in the wind.">
-    <meta name="keywords" content="whisper AI, soft listen, gentle intelligence, peach warmth, ethical AI">
-    <meta name="author" content="Whisper Labs">
+    <title>CoreAI · Enterprise Artificial Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,80 +15,59 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #fefaf7;
-            color: #3d2b1d;
+            background: #f4f6fa;
+            color: #1e293b;
             line-height: 1.5;
             scroll-behavior: smooth;
         }
 
         :root {
-            --whisper-light: #fff0e8;
-            --whisper-soft: #ffe0cc;
-            --whisper-glow: #ffccae;
-            --whisper-warm: #f5a06b;
-            --whisper-deep: #c45a2e;
-            --shadow-soft: 0 12px 28px rgba(196, 90, 46, 0.05);
-            --glow-soft: 0 0 28px rgba(245, 160, 107, 0.28);
-            --radius-card: 32px;
-        }
-
-        /* Wind pattern - unique */
-        .wind-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background-image: repeating-linear-gradient(80deg, rgba(255, 204, 174, 0.05) 0px, rgba(255, 204, 174, 0.05) 1px, transparent 1px, transparent 26px);
-            z-index: 0;
-        }
-        .wind-pattern::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(170deg, rgba(245, 160, 107, 0.04) 0px, rgba(245, 160, 107, 0.04) 1px, transparent 1px, transparent 26px);
-            pointer-events: none;
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-soft: #dbeafe;
+            --gray-bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-light: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+            --radius-lg: 20px;
+            --radius-md: 16px;
         }
 
         .container {
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 32px;
-            position: relative;
-            z-index: 1;
         }
 
         /* Navigation */
         .navbar {
-            background: rgba(254, 250, 247, 0.94);
-            backdrop-filter: blur(14px);
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-light);
             position: sticky;
             top: 0;
-            z-index: 101;
-            border-bottom: 1px solid var(--whisper-soft);
+            z-index: 100;
         }
 
         .nav-wrapper {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.9rem 0;
+            padding: 1rem 0;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(125deg, #c45a2e, #f5a06b);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.01em;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo span {
+            color: var(--primary);
         }
 
         .nav-links {
@@ -104,51 +80,48 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            color: #8a644c;
+            color: var(--text-muted);
             transition: 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--whisper-deep);
+            color: var(--primary);
         }
 
-        .btn-whisper {
-            background: linear-gradient(115deg, var(--whisper-deep), var(--whisper-warm));
-            padding: 0.5rem 1.6rem;
-            border-radius: 50px;
+        .btn-primary {
+            background: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
             color: white;
             font-weight: 600;
             text-decoration: none;
             transition: 0.2s;
-            box-shadow: 0 2px 8px rgba(196, 90, 46, 0.12);
-            display: inline-block;
-            cursor: pointer;
             border: none;
         }
 
-        .btn-whisper:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(196, 90, 46, 0.2);
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-light);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            background: white;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: var(--primary-soft);
         }
 
         /* Hero */
         .hero {
-            padding: 5rem 0 6rem;
-            background: radial-gradient(ellipse at 40% 35%, var(--whisper-glow) 0%, var(--whisper-light) 45%, #fefaf7 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 55%;
-            height: 55%;
-            background: radial-gradient(circle, rgba(245, 160, 107, 0.1), transparent 70%);
-            filter: blur(42px);
-            pointer-events: none;
+            padding: 5rem 0;
+            background: var(--gray-bg);
         }
 
         .hero-grid {
@@ -156,44 +129,35 @@
             flex-wrap: wrap;
             align-items: center;
             gap: 3rem;
-            position: relative;
-            z-index: 2;
         }
 
-        .hero-text {
+        .hero-content {
             flex: 1;
         }
 
-        .hero-tag {
-            background: rgba(196, 90, 46, 0.1);
-            border: 1px solid var(--whisper-soft);
-            border-radius: 50px;
-            padding: 0.3rem 1rem;
-            display: inline-block;
-            font-weight: 500;
+        .hero-badge {
+            background: var(--primary-soft);
+            color: var(--primary-dark);
+            border-radius: 40px;
+            padding: 0.25rem 1rem;
             font-size: 0.75rem;
-            color: var(--whisper-deep);
+            font-weight: 600;
+            display: inline-block;
             margin-bottom: 1.5rem;
         }
 
-        .hero-text h1 {
-            font-size: 3.6rem;
-            font-weight: 800;
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
             line-height: 1.2;
+            letter-spacing: -0.02em;
             margin-bottom: 1.2rem;
-            color: #3d2b1d;
+            color: var(--text-dark);
         }
 
-        .whisper-word {
-            background: linear-gradient(135deg, var(--whisper-deep), var(--whisper-warm));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #9a735b;
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
             max-width: 90%;
             margin-bottom: 2rem;
         }
@@ -205,109 +169,138 @@
         }
 
         .stat-item h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--whisper-deep);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
-        .hero-visual {
+        .stat-item span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-image {
             flex: 1;
             text-align: center;
-            background: rgba(255, 242, 234, 0.55);
-            backdrop-filter: blur(8px);
-            border-radius: 56px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--whisper-soft);
         }
 
-        .btn-primary {
-            background: linear-gradient(115deg, var(--whisper-deep), var(--whisper-warm));
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            display: inline-block;
-            text-decoration: none;
-            transition: 0.2s;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
-            border: none;
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius-lg);
+            background: #e2e8f0;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(196, 90, 46, 0.2);
-        }
-
+        /* Sections */
         section {
             padding: 5rem 0;
         }
 
-        .section-header {
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
         }
 
-        .section-header h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #3d2b1d;
-            margin-bottom: 0.6rem;
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 3rem;
         }
 
-        .section-header p {
-            color: #9a735b;
-            max-width: 580px;
-            margin: 0 auto;
-        }
-
-        /* Cards */
-        .cards-grid {
+        /* Features Grid */
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .whisper-card {
-            background: rgba(255, 242, 234, 0.7);
-            backdrop-filter: blur(4px);
-            border-radius: var(--radius-card);
-            padding: 2rem 1.8rem;
-            border: 1px solid var(--whisper-soft);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-soft);
-            cursor: pointer;
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 1.8rem;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
         }
 
-        .whisper-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--whisper-glow);
-            box-shadow: var(--glow-soft);
-            background: rgba(255, 248, 242, 0.92);
+        .feature-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-soft);
         }
 
-        .card-icon {
-            font-size: 2.4rem;
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
             margin-bottom: 1rem;
         }
 
-        /* Listen row */
-        .listen-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            background: var(--whisper-light);
-            border-radius: 52px;
-            padding: 2.5rem;
-            border: 1px solid var(--whisper-soft);
-            box-shadow: var(--shadow-soft);
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .listen-cell {
-            flex: 1;
-            text-align: center;
-            padding: 0.6rem;
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Cards */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .blog-img {
+            background: var(--gray-bg);
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .blog-card h3 {
+            font-size: 1.15rem;
+            margin: 0.5rem 0;
+        }
+
+        .blog-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .blog-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
         }
 
         /* Pricing */
@@ -318,350 +311,356 @@
             justify-content: center;
         }
 
-        .price-card {
-            background: rgba(255, 242, 234, 0.9);
-            border-radius: 32px;
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
             flex: 1;
-            min-width: 270px;
+            min-width: 280px;
             padding: 2rem;
-            border: 1px solid var(--whisper-soft);
-            transition: 0.25s;
-            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+            transition: 0.2s;
         }
 
-        .price-card.featured {
-            border-top: 5px solid var(--whisper-deep);
-            transform: scale(1.02);
-            background: #fffbf7;
-            box-shadow: var(--glow-soft);
+        .pricing-card.featured {
+            border-top: 3px solid var(--primary);
+            box-shadow: var(--shadow-md);
         }
 
-        .price-number {
-            font-size: 2.9rem;
-            font-weight: 800;
-            color: var(--whisper-deep);
+        .price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
             margin: 1rem 0;
         }
 
-        .btn-outline {
-            border: 1.5px solid var(--whisper-deep);
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            background: transparent;
-            color: var(--whisper-deep);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.2s;
-            cursor: pointer;
+        .price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-muted);
         }
 
-        .btn-outline:hover {
-            background: var(--whisper-deep);
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card li i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        /* CTA */
+        .cta-block {
+            background: var(--dark);
+            border-radius: var(--radius-lg);
             color: white;
-        }
-
-        .cta-section {
-            background: linear-gradient(125deg, var(--whisper-light), #fff0e6);
-            border-radius: 52px;
             text-align: center;
             padding: 3rem;
-            border: 1px solid var(--whisper-soft);
-            box-shadow: var(--shadow-soft);
+            margin: 2rem 0;
+        }
+
+        .cta-block h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-block .btn-primary {
+            background: white;
+            color: var(--dark);
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .cta-block .btn-primary:hover {
+            background: var(--primary-soft);
         }
 
         /* Privacy */
         .privacy-section {
-            background: #fff5ef;
-            border-radius: 38px;
-            padding: 2.5rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
             margin: 2rem 0;
-            border: 1px solid var(--whisper-soft);
-            scroll-margin-top: 90px;
-            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-light);
+            scroll-margin-top: 80px;
         }
 
         .privacy-section h2, .privacy-section h3 {
-            color: #3d2b1d;
-            margin-top: 1.8rem;
-            font-weight: 800;
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .privacy-section h2:first-child {
+            margin-top: 0;
         }
 
         .privacy-section p, .privacy-section li {
-            color: #9a735b;
+            color: var(--text-muted);
+            font-size: 0.9rem;
         }
 
+        .privacy-section ul {
+            padding-left: 1.2rem;
+        }
+
+        /* Footer */
         footer {
-            background: linear-gradient(115deg, #f0e0d4, #fae8dd);
-            color: #b08066;
+            background: var(--dark);
+            color: #94a3b8;
             padding: 3rem 0 2rem;
-            border-top: 1px solid var(--whisper-soft);
+            margin-top: 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-grid h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid a, .footer-grid p {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-grid a:hover {
+            color: white;
         }
 
         .back-to-top {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: linear-gradient(115deg, var(--whisper-deep), var(--whisper-warm));
+            background: var(--primary);
             color: white;
-            width: 46px;
-            height: 46px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            opacity: 0.8;
             transition: 0.2s;
             z-index: 99;
-            box-shadow: var(--shadow-soft);
+            box-shadow: var(--shadow-md);
         }
 
         .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-3px);
+            background: var(--primary-dark);
         }
 
-        /* Modal */
-        .info-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .info-modal-content {
-            background: #fffaf5;
-            padding: 2rem;
-            border-radius: 32px;
-            max-width: 380px;
-            text-align: center;
-            border: 1px solid var(--whisper-soft);
-            box-shadow: var(--glow-soft);
-        }
-        .info-modal-content h3 { color: var(--whisper-deep); margin-bottom: 1rem; }
-        .info-modal-content p { color: #8a644c; margin-bottom: 0.5rem; }
-        .info-modal-content button {
-            margin-top: 1.5rem;
-            padding: 0.5rem 1.5rem;
-            background: var(--whisper-deep);
-            color: white;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 800px) {
-            .hero-text h1 { font-size: 2.2rem; }
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .hero-content h1 { font-size: 2.2rem; }
             .nav-wrapper { flex-direction: column; }
-            .section-header h2 { font-size: 1.9rem; }
+            .section-title { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="wind-pattern"></div>
-
-<div id="demoModal" class="info-modal">
-    <div class="info-modal-content">
-        <i class="fas fa-ear-listen" style="font-size: 3rem; color: #f5a06b;"></i>
-        <h3>Whisper AI</h3>
-        <p>This is a gentle whisper. In a live environment, this would open your listening space.</p>
-        <button onclick="closeModal()">Listen closer</button>
-    </div>
-</div>
-
 <nav class="navbar">
     <div class="container nav-wrapper">
-        <div class="logo">Whisper<span style="color:#f5a06b;">🌬️</span></div>
+        <div class="logo">Core<span>AI</span></div>
         <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#listen">Listen</a>
-            <a href="#quiet">Quiet</a>
-            <a href="#pricing">Plans</a>
-            <a href="#privacy">Trust</a>
-            <a href="#" class="btn-whisper" onclick="openModal()">Hear whisper</a>
+            <a href="#features">Features</a>
+            <a href="#blog">Blog</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#" class="btn-primary">Get started</a>
         </div>
     </div>
 </nav>
 
 <main>
+    <!-- Hero -->
     <section id="home" class="hero">
         <div class="container hero-grid">
-            <div class="hero-text">
-                <div class="hero-tag"><i class="fas fa-ear-listen"></i> Listening intelligence</div>
-                <h1>AI that <span class="whisper-word">listens softly</span> to you</h1>
-                <p>Whisper AI brings soft, listening intelligence to your world. Like a gentle whisper in the wind — ethical, intuitive, and beautifully human.</p>
-                <a href="#" class="btn-primary" onclick="openModal()"><i class="fas fa-heart"></i> Listen to whisper</a>
+            <div class="hero-content">
+                <div class="hero-badge">Enterprise AI Platform</div>
+                <h1>Intelligence that powers your business</h1>
+                <p>Deploy custom LLMs, autonomous agents, and predictive analytics — all on one secure, scalable infrastructure.</p>
+                <a href="#" class="btn-primary">Start free trial →</a>
                 <div class="hero-stats">
-                    <div class="stat-item"><h3>42k+</h3><span>listening souls</span></div>
-                    <div class="stat-item"><h3>4.99★</h3><span>whisper rating</span></div>
-                    <div class="stat-item"><h3>∞</h3><span>gentle ear</span></div>
+                    <div class="stat-item"><h3>99.9%</h3><span>Uptime SLA</span></div>
+                    <div class="stat-item"><h3>500M+</h3><span>API calls</span></div>
+                    <div class="stat-item"><h3>150+</h3><span>enterprises</span></div>
                 </div>
             </div>
-            <div class="hero-visual">
-                <svg width="100%" height="250" viewBox="0 0 500 270" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="500" height="270" rx="36" fill="#FFF5EE" stroke="#FFE0CC" stroke-width="1"/>
-                    <circle cx="170" cy="125" r="48" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1.5"/>
-                    <circle cx="170" cy="125" r="28" fill="#FFCCAE" fill-opacity="0.5"/>
-                    <circle cx="170" cy="125" r="11" fill="#C45A2E"/>
-                    <path d="M280 105 L340 135 L280 165 L220 135 Z" fill="#FFE0CC" stroke="#F5A06B" stroke-width="1.5"/>
-                    <circle cx="280" cy="135" r="8" fill="#C45A2E" fill-opacity="0.6"/>
-                    <path d="M390 115 L410 140 L390 165 L370 140 Z" fill="#FFCCAE" stroke="#F5A06B" stroke-width="1"/>
-                    <path d="M120 210 L180 210 L150 245 Z" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1"/>
-                    <path d="M320 210 L380 210 L350 245 Z" fill="#FFEFE2" stroke="#F5A06B" stroke-width="1"/>
-                </svg>
+            <div class="hero-image">
+                <img src="https://placehold.co/550x450/1e293b/ffffff?text=AI+Dashboard&font=inter" alt="CoreAI platform">
             </div>
         </div>
     </section>
 
-    <section id="listen">
+    <!-- Features -->
+    <section id="features">
         <div class="container">
-            <div class="section-header">
-                <h2>Ways whisper listens to you</h2>
-                <p>Gentle features that feel like being truly heard</p>
-            </div>
-            <div class="cards-grid">
-                <div class="whisper-card" onclick="openModal()"><div class="card-icon">🌬️</div><h3>Whisper Chat</h3><p>Conversations that feel like soft secrets between trusted friends.</p></div>
-                <div class="whisper-card" onclick="openModal()"><div class="card-icon">✨</div><h3>Listening Insights</h3><p>Beautiful, gentle analytics that arrive like quiet understanding.</p></div>
-                <div class="whisper-card" onclick="openModal()"><div class="card-icon">🍃</div><h3>Gentle Current</h3><p>Automation that moves like a soft breeze — quiet and attentive.</p></div>
-                <div class="whisper-card" onclick="openModal()"><div class="card-icon">🕯️</div><h3>Sacred Ear</h3><p>Privacy-first, bias-aware, and transparent as still air.</p></div>
+            <h2 class="section-title">Built for production AI</h2>
+            <p class="section-sub">Everything you need to build, deploy, and scale machine learning models</p>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3>LLM Fine-tuning</h3><p>Customize foundation models with your proprietary data.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-robot"></i></div><h3>Agent Orchestration</h3><p>Build multi-agent systems for complex workflows.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3>Predictive Analytics</h3><p>Forecast trends with 94% accuracy.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Enterprise Security</h3><p>GDPR, SOC2, and end-to-end encryption.</p></div>
             </div>
         </div>
     </section>
 
-    <section id="quiet">
+    <!-- Blog -->
+    <section id="blog">
         <div class="container">
-            <div class="listen-row">
-                <div class="listen-cell"><i class="fas fa-feather-alt" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Feather-soft</h3><p>Blazing fast, gentle touch</p></div>
-                <div class="listen-cell"><i class="fas fa-globe" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">60 languages</h3><p>Global whisper glow</p></div>
-                <div class="listen-cell"><i class="fas fa-shield-heart" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Yours always</h3><p>Never trained on</p></div>
-                <div class="listen-cell"><i class="fas fa-ear-listen" style="font-size: 2rem; color:#c45a2e;"></i><h3 style="margin: 1rem 0 0.5rem;">Listen by soul</h3><p>Built with empathy</p></div>
+            <h2 class="section-title">Latest insights</h2>
+            <p class="section-sub">Research, engineering, and AI trends from our team</p>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img"><i class="fas fa-file-alt"></i></div>
+                    <div class="blog-content">
+                        <div class="blog-tag">Engineering</div>
+                        <h3>Building reliable RAG systems at scale</h3>
+                        <p>Lessons learned from production deployments.</p>
+                        <div class="blog-meta">May 20, 2025 · 6 min read</div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img"><i class="fas fa-chart-simple"></i></div>
+                    <div class="blog-content">
+                        <div class="blog-tag">Research</div>
+                        <h3>New benchmarks for agentic evaluation</h3>
+                        <p>How we measure real-world agent performance.</p>
+                        <div class="blog-meta">May 15, 2025 · 8 min read</div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img"><i class="fas fa-lock"></i></div>
+                    <div class="blog-content">
+                        <div class="blog-tag">Security</div>
+                        <h3>LLM security: prompt injection & guardrails</h3>
+                        <p>Best practices for production AI systems.</p>
+                        <div class="blog-meta">May 10, 2025 · 5 min read</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Pricing -->
     <section id="pricing">
         <div class="container">
-            <div class="section-header">
-                <h2>Quiet plans for every whisper</h2>
-                <p>Pricing as soft as a secret</p>
-            </div>
+            <h2 class="section-title">Flexible plans</h2>
+            <p class="section-sub">Start free, scale as you grow</p>
             <div class="pricing-grid">
-                <div class="price-card"><h3>Murmur</h3><div class="price-number">$0</div><p>360 messages/month, basic whisper, community quiet.</p>
-                    <a href="#" class="btn-outline" style="margin-top:1.5rem; display:inline-block;" onclick="openModal()">Start murmur</a>
+                <div class="pricing-card">
+                    <h3>Developer</h3>
+                    <div class="price">$0<span>/month</span></div>
+                    <p>10K API calls, community support</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 10K API calls/month</li>
+                        <li><i class="fas fa-check"></i> Core models</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="display: block; text-align: center;">Get started</a>
                 </div>
-                <div class="price-card featured"><h3>Whisper <span style="background:#ffe0cc; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:40px;">🌬️ Most gentle</span></h3><div class="price-number">$6<span style="font-size:1rem;">/mo</span></div><p>Unlimited messages, priority whisper, full API.</p>
-                    <a href="#" class="btn-primary" onclick="openModal()">Hear whisper</a>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$79<span>/month</span></div>
+                    <p>500K API calls, priority support</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 500K API calls/month</li>
+                        <li><i class="fas fa-check"></i> Advanced models</li>
+                        <li><i class="fas fa-check"></i> Priority 24/7 support</li>
+                        <li><i class="fas fa-check"></i> Custom fine-tuning</li>
+                    </ul>
+                    <a href="#" class="btn-primary" style="display: block; text-align: center;">Start trial</a>
                 </div>
-                <div class="price-card"><h3>Silence</h3><div class="price-number">$19<span style="font-size:1rem;">/mo</span></div><p>Team features, analytics, custom quiet.</p>
-                    <a href="#" class="btn-outline" onclick="openModal()">Find silence</a>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <p>Unlimited, on-prem, dedicated support</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Unlimited API calls</li>
+                        <li><i class="fas fa-check"></i> On-prem / VPC</li>
+                        <li><i class="fas fa-check"></i> Custom SLA</li>
+                        <li><i class="fas fa-check"></i> Dedicated team</li>
+                    </ul>
+                    <a href="#" class="btn-outline" style="display: block; text-align: center;">Contact sales</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA -->
     <div class="container">
-        <div class="cta-section">
-            <h2 style="font-size: 2rem;">Let soft whisper listen to your heart</h2>
-            <p style="margin: 1rem 0 2rem; opacity: 0.85;">Join thousands who've found soft, listening intelligence with Whisper.</p>
-            <a href="#" class="btn-primary" onclick="openModal()"><i class="fas fa-ear-listen"></i> Start your whisper trial</a>
+        <div class="cta-block">
+            <h2>Ready to transform with AI?</h2>
+            <p style="opacity: 0.8;">Join 500+ enterprises already using CoreAI.</p>
+            <a href="#" class="btn-primary">Start free →</a>
         </div>
     </div>
 
+    <!-- Privacy Policy -->
     <div class="container" id="privacy">
         <div class="privacy-section">
-            <h2><i class="fas fa-leaf" style="color:#f5a06b;"></i> Sacred Whisper — Our Listening Vow</h2>
-            <p><strong>Last gentle whisper:</strong> May 2025 | Whisper Labs holds your trust as soft as a secret.</p>
+            <h2><i class="fas fa-shield-alt" style="color: var(--primary);"></i> Privacy Policy</h2>
+            <p><strong>Effective:</strong> May 2025 | CoreAI Inc.</p>
             
-            <h3>1. What we gather</h3>
-            <p>Account essence, conversation whisper (encrypted at rest), and gentle usage echoes. You remain the sole owner of your quiet light.</p>
+            <h3>1. Information we collect</h3>
+            <p>We collect account data (name, email, billing info), usage data (API logs, model inputs), and optional feedback. We do not store sensitive personal data without consent.</p>
             
-            <h3>2. How your light is honoured</h3>
-            <p>To nurture our AI, personalise your journey, handle billing, and support you. Zero selling. Zero advertising training. Zero dark patterns.</p>
+            <h3>2. How we use your data</h3>
+            <p>To operate the platform, improve performance, process payments, and ensure security. We never sell your data.</p>
             
-            <h3>3. Keeping your whisper safe</h3>
-            <p>You may delete any conversation instantly. Account data vanishes when you wish. Full gentle export available anytime.</p>
+            <h3>3. Data retention</h3>
+            <p>Data retained while account is active. You may request deletion. Logs purged after 90 days.</p>
             
-            <h3>4. Trusted guardians</h3>
-            <p>We partner with secure infrastructure providers under strict data pledges. All data travels encrypted and rests encrypted.</p>
+            <h3>4. Third-party sharing</h3>
+            <p>Trusted subprocessors (AWS, Stripe) under strict data protection agreements.</p>
             
-            <h3>5. Your listening rights</h3>
-            <p>Access, correct, delete, restrict, or take your data elsewhere. Our privacy team is always here for you.</p>
+            <h3>5. Your rights (GDPR/CCPA)</h3>
+            <p>Access, correction, deletion, portability. Email privacy@coreai.ai</p>
             
-            <h3>6. Young souls</h3>
-            <p>Whisper is crafted for humans 16 and over. We do not knowingly collect from younger hearts.</p>
+            <h3>6. Security</h3>
+            <p>AES-256 encryption, TLS 1.3, regular audits.</p>
             
-            <h3>7. Across borders</h3>
-            <p>Data may travel the globe under Standard Contractual Clauses — always protected, always respected.</p>
-            
-            <h3>8. When whisper evolves</h3>
-            <p>Material changes will be shared with you. Our Data Protection Officer is always available.</p>
-            <p style="margin-top:1.5rem;"><i class="fas fa-ear-listen" style="color:#f5a06b;"></i> Whisper — Intelligence that listens gently to you.</p>
+            <h3>7. Contact</h3>
+            <p>DPO: dpo@coreai.ai | CoreAI, 101 Tech Hub, San Francisco, CA</p>
         </div>
     </div>
 </main>
 
 <footer>
     <div class="container">
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
-            <div>
-                <h3 style="color:#3d2b1d;">Whisper<span style="color:#f5a06b;">🌬️</span></h3>
-                <p style="max-width: 210px; margin-top: 0.5rem;">Your gentle ear of wisdom.</p>
-                <div style="margin-top: 1rem;">
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066; margin-right: 1rem;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066; margin-right: 1rem;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" onclick="openModal(); return false;" style="color:#b08066;"><i class="fab fa-soundcloud"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4>Listen</h4>
-                <p><a href="#listen" style="color:#b08066; text-decoration:none;">Features</a><br>
-                   <a href="#pricing" style="color:#b08066; text-decoration:none;">Pricing</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">API</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Status</a></p>
-            </div>
-            <div>
-                <h4>Resources</h4>
-                <p><a href="#" onclick="openModal(); return false;" style="color:#b08066;">Journal</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Guide</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Community</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Support</a></p>
-            </div>
-            <div>
-                <h4>Trust</h4>
-                <p><a href="#privacy" style="color:#b08066; text-decoration:none;">Privacy Vow</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Terms of Whisper</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Ethics Charter</a><br>
-                   <a href="#" onclick="openModal(); return false;" style="color:#b08066;">Security</a></p>
-            </div>
-        </div>
-        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #ffe0cc; margin-top: 2rem; font-size: 0.8rem;">
-            <p>© 2025 Whisper Labs — Intelligence that listens gently to you.</p>
-            <p style="margin-top: 0.5rem;">Heard in trust · Whispered in grace</p>
+        <div class="footer-grid">
+            <div><h4>CoreAI</h4><p>Enterprise AI platform</p><div style="margin-top:0.5rem;">© 2025</div></div>
+            <div><h4>Product</h4><p><a href="#features">Features</a></p><p><a href="#pricing">Pricing</a></p><p>API</p></div>
+            <div><h4>Resources</h4><p><a href="#blog">Blog</a></p><p>Docs</p><p>Support</p></div>
+            <div><h4>Legal</h4><p><a href="#privacy">Privacy</a></p><p>Terms</p><p>Security</p></div>
         </div>
     </div>
 </footer>
 
-<a href="#" class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="fas fa-arrow-up"></i></a>
+<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
 <script>
-    function openModal() {
-        document.getElementById('demoModal').style.display = 'flex';
-    }
-    function closeModal() {
-        document.getElementById('demoModal').style.display = 'none';
-    }
-    window.onclick = function(event) {
-        let modal = document.getElementById('demoModal');
-        if (event.target === modal) modal.style.display = 'none';
-    }
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -673,11 +672,6 @@
             }
         });
     });
-    document.querySelector('.back-to-top').addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 </script>
-    <script src="protection.js"></script>
 </body>
 </html>
