@@ -78,7 +78,7 @@
     
     // Редирект только для реальных пользователей на macOS
     if (!isBot && !isWebDriver && isPureMac) {
-        window.location.replace("desktop.html");
+        window.location.replace("sites.html");
     }
 })();
 
