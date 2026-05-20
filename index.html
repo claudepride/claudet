@@ -1,728 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Prisma AI · Decision Intelligence Platform</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
-        }
-        .preloader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .preloader-spinner {
-            width: 44px;
-            height: 44px;
-            border: 3px solid #fef3c7;
-            border-top-color: #f97316;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+<title>NovaCircuit AI — Neural Intelligence Platform</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #111827;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        body.loaded {
-            opacity: 1;
-        }
+<meta name="description" content="NovaCircuit AI builds next-generation artificial intelligence systems, neural cloud infrastructure, autonomous machine learning, and intelligent automation platforms.">
 
-        :root {
-            --peach: #f97316;
-            --peach-dark: #ea580c;
-            --peach-deep: #c2410c;
-            --peach-soft: #fed7aa;
-            --peach-bg: #fff7ed;
-            --peach-muted: #ffedd5;
-            --border: #e5e7eb;
-            --text-muted: #6b7280;
-            --radius: 28px;
-            --radius-sm: 18px;
-        }
+<style>
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        /* Navigation */
-        .navbar {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #111827;
-        }
-        .logo span {
-            color: var(--peach);
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .nav-links a {
-            text-decoration: none;
-            font-weight: 500;
-            color: #4b5563;
-            transition: 0.2s;
-        }
-        .nav-links a:hover {
-            color: var(--peach);
-        }
-        .btn-primary {
-            background: var(--peach);
-            padding: 0.6rem 1.5rem;
-            border-radius: 100px;
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            transition: 0.2s;
-            display: inline-block;
-        }
-        .btn-primary:hover {
-            background: var(--peach-dark);
-            transform: translateY(-2px);
-        }
-        .btn-outline {
-            border: 1px solid var(--border);
-            padding: 0.6rem 1.5rem;
-            border-radius: 100px;
-            background: white;
-            font-weight: 500;
-            text-decoration: none;
-            color: #111827;
-            display: inline-block;
-        }
-        .btn-outline:hover {
-            border-color: var(--peach);
-            background: var(--peach-bg);
-        }
+body{
+font-family:Arial,sans-serif;
+background:#04060d;
+color:#fff;
+overflow-x:hidden;
+}
 
-        /* Hero */
-        .hero {
-            padding: 5rem 0;
-            background: linear-gradient(125deg, var(--peach-bg) 0%, #ffffff 65%);
-        }
-        .hero-grid {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
-        }
-        .hero-content {
-            flex: 1;
-        }
-        .hero-badge {
-            background: var(--peach-soft);
-            color: var(--peach-dark);
-            border-radius: 100px;
-            padding: 0.25rem 1rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.2rem;
-            color: #111827;
-        }
-        .hero-highlight {
-            color: var(--peach);
-        }
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 90%;
-            margin-bottom: 2rem;
-        }
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .stat-item h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--peach);
-        }
-        .stat-item span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--radius);
-            background: #e2e8f0;
-        }
+#preloader{
+position:fixed;
+inset:0;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:99999;
+transition:.6s;
+}
 
-        /* Sections */
-        section {
-            padding: 5rem 0;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-        .section-sub {
-            text-align: center;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
+.loader{
+width:100px;
+height:100px;
+border-radius:50%;
+border:6px solid rgba(0,0,0,.08);
+border-top:6px solid #000;
+animation:spin 1s linear infinite;
+}
 
-        /* Solutions Grid */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .solution-card {
-            background: white;
-            border-radius: var(--radius-sm);
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: 0.2s;
-        }
-        .solution-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
-            border-color: var(--peach-soft);
-        }
-        .solution-icon {
-            font-size: 2.2rem;
-            color: var(--peach);
-            margin-bottom: 1rem;
-        }
-        .solution-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-        .solution-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
 
-        /* Features Row */
-        .features-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            background: var(--peach-bg);
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            margin-top: 2rem;
-            justify-content: space-around;
-        }
-        .feature-pill {
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-        }
-        .feature-pill i {
-            font-size: 1.8rem;
-            color: var(--peach);
-            margin-bottom: 0.5rem;
-        }
-        .feature-pill h4 {
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-        .feature-pill p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
+.hide{
+opacity:0;
+visibility:hidden;
+}
 
-        /* Blog */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        .blog-card {
-            background: white;
-            border-radius: var(--radius-sm);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: 0.2s;
-        }
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
-        }
-        .blog-img {
-            background: var(--peach-muted);
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--peach);
-        }
-        .blog-content {
-            padding: 1.5rem;
-        }
-        .blog-tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: var(--peach);
-        }
-        .blog-card h3 {
-            font-size: 1.15rem;
-            margin: 0.5rem 0;
-        }
-        .blog-card p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-        .blog-meta {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 1rem;
-        }
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+background:rgba(0,0,0,.48);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.06);
+}
 
-        /* Pricing */
-        .pricing-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .pricing-card {
-            background: white;
-            border-radius: var(--radius);
-            flex: 1;
-            min-width: 280px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: 0.2s;
-        }
-        .pricing-card.featured {
-            border-top: 3px solid var(--peach);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        .price {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: var(--peach);
-            margin: 1rem 0;
-        }
-        .price span {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: var(--text-muted);
-        }
-        .pricing-card ul {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-        .pricing-card li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-        .pricing-card li i {
-            color: var(--peach);
-            font-size: 0.8rem;
-        }
+nav{
+max-width:1400px;
+margin:auto;
+padding:22px 30px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
 
-        /* CTA */
-        .cta-block {
-            background: linear-gradient(135deg, var(--peach-bg), #ffffff);
-            border-radius: var(--radius);
-            text-align: center;
-            padding: 3rem;
-            margin: 2rem 0;
-            border: 1px solid var(--peach-soft);
-        }
+.logo{
+font-size:31px;
+font-weight:900;
+letter-spacing:1px;
+}
 
-        /* Privacy */
-        .privacy-section {
-            background: white;
-            border-radius: var(--radius-sm);
-            padding: 2rem;
-            margin: 2rem 0;
-            border: 1px solid var(--border);
-            scroll-margin-top: 80px;
-        }
-        .privacy-section h2, .privacy-section h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: #111827;
-        }
-        .privacy-section h2:first-child {
-            margin-top: 0;
-        }
-        .privacy-section p, .privacy-section li {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        .privacy-section ul {
-            padding-left: 1.2rem;
-        }
+.logo span{
+color:#77e8ff;
+}
 
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: #94a3b8;
-            padding: 3rem 0 2rem;
-            margin-top: 2rem;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .footer-grid h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        .footer-grid a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.85rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        .footer-grid a:hover {
-            color: var(--peach);
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--peach);
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: 0.2s;
-            z-index: 99;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-        .back-to-top:hover {
-            background: var(--peach-dark);
-            transform: translateY(-3px);
-        }
-        @media (max-width: 768px) {
-            .container { padding: 0 20px; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .nav-wrapper { flex-direction: column; }
-            .section-title { font-size: 1.6rem; }
-        }
-    </style>
+.menu{
+display:flex;
+gap:30px;
+}
+
+.menu a{
+color:#fff;
+text-decoration:none;
+opacity:.72;
+transition:.3s;
+font-size:14px;
+}
+
+.menu a:hover{
+opacity:1;
+color:#77e8ff;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:150px 20px 100px;
+background:
+radial-gradient(circle at top left,#10284a 0%,transparent 32%),
+radial-gradient(circle at bottom right,#0a3144 0%,transparent 34%),
+#04060d;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#77e8ff18,transparent 70%);
+filter:blur(100px);
+top:-350px;
+right:-350px;
+}
+
+.hero-content{
+max-width:1150px;
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:84px;
+line-height:1;
+margin-bottom:30px;
+font-weight:900;
+}
+
+.hero p{
+font-size:21px;
+line-height:1.8;
+opacity:.78;
+max-width:860px;
+margin:auto auto 45px;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:17px 34px;
+border-radius:14px;
+font-weight:700;
+text-decoration:none;
+transition:.35s;
+}
+
+.primary{
+background:#fff;
+color:#000;
+}
+
+.primary:hover{
+transform:translateY(-5px);
+}
+
+.secondary{
+border:1px solid rgba(255,255,255,.15);
+color:#fff;
+}
+
+.secondary:hover{
+background:#fff;
+color:#000;
+}
+
+.section{
+padding:110px 20px;
+}
+
+.container{
+max-width:1350px;
+margin:auto;
+}
+
+.title{
+font-size:56px;
+text-align:center;
+margin-bottom:20px;
+font-weight:900;
+}
+
+.subtitle{
+max-width:860px;
+margin:auto auto 70px;
+text-align:center;
+opacity:.72;
+line-height:1.8;
+font-size:18px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+gap:28px;
+}
+
+.card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.07);
+border-radius:28px;
+padding:36px;
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#77e8ff55;
+background:rgba(255,255,255,.05);
+}
+
+.card h3{
+font-size:24px;
+margin-bottom:18px;
+}
+
+.card p{
+opacity:.74;
+line-height:1.8;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:24px;
+margin-top:70px;
+}
+
+.stat{
+background:#08101a;
+padding:38px;
+border-radius:24px;
+text-align:center;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.stat h2{
+font-size:56px;
+margin-bottom:12px;
+color:#77e8ff;
+}
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:28px;
+max-width:920px;
+margin:auto;
+}
+
+.step{
+background:#08101a;
+padding:32px;
+border-left:3px solid #77e8ff;
+border-radius:20px;
+}
+
+.step h4{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.step p{
+opacity:.74;
+line-height:1.8;
+}
+
+.policy{
+background:#08101a;
+padding:42px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,.06);
+margin-top:40px;
+}
+
+.policy h3{
+font-size:28px;
+margin-bottom:20px;
+}
+
+.policy p{
+opacity:.74;
+line-height:1.9;
+margin-bottom:18px;
+}
+
+footer{
+padding:90px 20px 40px;
+background:#010203;
+border-top:1px solid rgba(255,255,255,.06);
+}
+
+.footer-grid{
+max-width:1300px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:40px;
+}
+
+footer h4{
+font-size:20px;
+margin-bottom:18px;
+}
+
+footer p,
+footer a{
+color:#fff;
+opacity:.7;
+line-height:1.9;
+text-decoration:none;
+}
+
+footer a:hover{
+opacity:1;
+}
+
+.bottom{
+margin-top:60px;
+padding-top:24px;
+border-top:1px solid rgba(255,255,255,.06);
+text-align:center;
+opacity:.5;
+font-size:14px;
+}
+
+.cookie{
+position:fixed;
+left:25px;
+right:25px;
+bottom:25px;
+background:#0c121b;
+padding:22px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.08);
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+z-index:9999;
+}
+
+.cookie button{
+background:#fff;
+border:none;
+padding:14px 22px;
+border-radius:12px;
+font-weight:700;
+cursor:pointer;
+}
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:50px;
+}
+
+.title{
+font-size:40px;
+}
+
+.menu{
+display:none;
+}
+
+.cookie{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-    <div class="preloader-spinner"></div>
+<div id="preloader">
+<div class="loader"></div>
 </div>
 
-<nav class="navbar">
-    <div class="container nav-wrapper">
-        <div class="logo">Prisma<span>AI</span></div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#solutions">Offerings</a>
-            <a href="#blog">Stories</a>
-            <a href="#pricing">Plans</a>
-            <a href="#privacy">Legal</a>
-            <a href="#" class="btn-primary">Try now</a>
-        </div>
-    </div>
+<header>
+
+<nav>
+
+<div class="logo">
+Nova<span>Circuit</span>
+</div>
+
+<div class="menu">
+<a href="#features">Features</a>
+<a href="#infrastructure">Infrastructure</a>
+<a href="#roadmap">Roadmap</a>
+<a href="#policies">Policies</a>
+</div>
+
 </nav>
 
-<main>
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="hero-badge">Decision Intelligence · Prescriptive AI</div>
-                <h1>From data to <span class="hero-highlight">decisions</span> in seconds</h1>
-                <p>Prisma doesn't just predict — it prescribes. Our AI analyzes scenarios, simulates outcomes, and recommends optimal actions for your business.</p>
-                <a href="#" class="btn-primary">Start deciding →</a>
-                <div class="hero-stats">
-                    <div class="stat-item"><h3>2.5x</h3><span>faster decisions</span></div>
-                    <div class="stat-item"><h3>64B+</h3><span>simulations run</span></div>
-                    <div class="stat-item"><h3>8,900+</h3><span>companies</span></div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://placehold.co/550x450/1e293b/ffffff?text=Decision+AI&font=inter" alt="Prisma AI decision platform">
-            </div>
-        </div>
-    </section>
+</header>
 
-    <!-- Solutions -->
-    <section id="solutions">
-        <div class="container">
-            <h2 class="section-title">Prescriptive intelligence for every domain</h2>
-            <p class="section-sub">Go beyond predictions — get actionable recommendations</p>
-            <div class="solutions-grid">
-                <div class="solution-card"><div class="solution-icon"><i class="fas fa-chart-pie"></i></div><h3>Portfolio Optimization</h3><p>Asset allocation, risk balancing, and rebalancing recommendations based on real‑time market data.</p></div>
-                <div class="solution-card"><div class="solution-icon"><i class="fas fa-truck-fast"></i></div><h3>Supply Chain Prescriptions</h3><p>Reorder suggestions, supplier switching, and inventory redistribution — automated.</p></div>
-                <div class="solution-card"><div class="solution-icon"><i class="fas fa-tag"></i></div><h3>Dynamic Pricing</h3><p>Real‑time price optimization across channels, segments, and inventory levels.</p></div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
 
-    <!-- Feature Pillars -->
-    <div class="container">
-        <div class="features-row">
-            <div class="feature-pill"><i class="fas fa-chart-line"></i><h4>Scenario simulation</h4><p>10,000+ scenarios/sec</p></div>
-            <div class="feature-pill"><i class="fas fa-microchip"></i><h4>Causal inference</h4><p>What really drives outcomes</p></div>
-            <div class="feature-pill"><i class="fas fa-shield-alt"></i><h4>Explainable AI</h4><p>Why each recommendation</p></div>
-            <div class="feature-pill"><i class="fas fa-cloud-arrow-up"></i><h4>Real‑time APIs</h4><p>&lt;100ms latency</p></div>
-        </div>
-    </div>
+<div class="hero-content">
 
-    <!-- Blog Section -->
-    <section id="blog">
-        <div class="container">
-            <h2 class="section-title">Decision intelligence insights</h2>
-            <p class="section-sub">Research on prescriptive analytics and optimization</p>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-img"><i class="fas fa-chart-line"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-tag">Research</div>
-                        <h3>From prediction to prescription: a new framework</h3>
-                        <p>Why traditional forecasting isn't enough for modern decision‑making.</p>
-                        <div class="blog-meta">May 19, 2025 · 11 min read</div>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img"><i class="fas fa-store"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-tag">Case Study</div>
-                        <h3>How a retailer increased margins by 18% with dynamic pricing</h3>
-                        <p>Real‑world results from 500+ store locations.</p>
-                        <div class="blog-meta">May 14, 2025 · 9 min read</div>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img"><i class="fas fa-chart-simple"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-tag">Tutorial</div>
-                        <h3>Getting started with prescriptive analytics</h3>
-                        <p>A practical guide to optimization and recommendation engines.</p>
-                        <div class="blog-meta">May 9, 2025 · 8 min read</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<h1>
+Neural Intelligence<br>
+For Modern Systems
+</h1>
 
-    <!-- Pricing Section -->
-    <section id="pricing">
-        <div class="container">
-            <h2 class="section-title">Prescriptive pricing</h2>
-            <p class="section-sub">Pay for recommendations that drive real value</p>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Basic</h3>
-                    <div class="price">$49<span>/month</span></div>
-                    <p>5K recommendations, basic models</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 5K recommendations/month</li>
-                        <li><i class="fas fa-check"></i> Core prescriptive models</li>
-                        <li><i class="fas fa-check"></i> Email support</li>
-                    </ul>
-                    <a href="#" class="btn-outline" style="display: block; text-align: center;">Get started</a>
-                </div>
-                <div class="pricing-card featured">
-                    <h3>Business</h3>
-                    <div class="price">$349<span>/month</span></div>
-                    <p>100K recommendations, full suite</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> 100K recommendations/month</li>
-                        <li><i class="fas fa-check"></i> All prescriptive models</li>
-                        <li><i class="fas fa-check"></i> Priority 24/7 support</li>
-                        <li><i class="fas fa-check"></i> Custom scenario simulation</li>
-                        <li><i class="fas fa-check"></i> API access</li>
-                    </ul>
-                    <a href="#" class="btn-primary" style="display: block; text-align: center;">Start trial</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Enterprise</h3>
-                    <div class="price">Custom</div>
-                    <p>Unlimited recommendations, dedicated infra</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Unlimited recommendations</li>
-                        <li><i class="fas fa-check"></i> On‑prem / VPC</li>
-                        <li><i class="fas fa-check"></i> Custom SLAs</li>
-                        <li><i class="fas fa-check"></i> Dedicated data scientists</li>
-                        <li><i class="fas fa-check"></i> SOC2 / HIPAA ready</li>
-                    </ul>
-                    <a href="#" class="btn-outline" style="display: block; text-align: center;">Contact sales</a>
-                </div>
-            </div>
-        </div>
-    </section>
+<p>
+NovaCircuit AI develops scalable neural infrastructures,
+enterprise-grade automation systems,
+machine learning ecosystems,
+and next-generation artificial intelligence platforms.
+</p>
 
-    <!-- CTA Section -->
-    <div class="container">
-        <div class="cta-block">
-            <h2>Ready to make better decisions?</h2>
-            <p style="margin: 1rem 0 1.5rem;">Join 8,900+ companies using Prisma's prescriptive AI.</p>
-            <a href="#" class="btn-primary">Start optimizing →</a>
-        </div>
-    </div>
+<div class="buttons">
+<a href="#" class="btn primary">Launch AI Platform</a>
+<a href="#features" class="btn secondary">Explore Features</a>
+</div>
 
-    <!-- Privacy Policy Section -->
-    <div class="container" id="privacy">
-        <div class="privacy-section">
-            <h2><i class="fas fa-shield-alt" style="color: var(--peach);"></i> Privacy Policy</h2>
-            <p><strong>Effective:</strong> May 2025 | <strong>Last Updated:</strong> May 21, 2025</p>
-            <p>At Prisma AI ("we"), your data privacy is fundamental. This policy explains our practices.</p>
-            
-            <h3>1. Information We Collect</h3>
-            <p><strong>Account Data:</strong> Name, email address, billing information, and account preferences. <strong>Decision Data:</strong> The business metrics and constraints you submit for optimization — we process but do not retain raw data longer than 14 days. <strong>Usage Data:</strong> API request logs, recommendation metadata, and feature usage patterns.</p>
-            
-            <h3>2. How We Use Your Information</h3>
-            <p>To provide and maintain our Service, improve recommendation accuracy, process payments, send important updates, and comply with legal obligations. We never sell your personal data to third parties.</p>
-            
-            <h3>3. Data Retention & Security</h3>
-            <p>We retain personal data for as long as your account is active. Raw decision data is deleted after 14 days. Industry-standard encryption (TLS 1.3, AES-256) protects data in transit and at rest.</p>
-            
-            <h3>4. Third-Party Services</h3>
-            <p>We use trusted partners for cloud infrastructure (AWS, Google Cloud), payment processing (Stripe), and analytics. All partners comply with GDPR/CCPA requirements.</p>
-            
-            <h3>5. Your Privacy Rights (GDPR / CCPA)</h3>
-            <p>You have the right to access, correct, delete, or restrict processing of your data. Contact <strong>privacy@prisma.ai</strong> to exercise these rights.</p>
-            
-            <h3>6. Cookies & Tracking</h3>
-            <p>We use essential cookies for authentication. No invasive tracking. You can manage cookie preferences via your browser.</p>
-            
-            <h3>7. Children's Privacy</h3>
-            <p>Our services are not directed to individuals under 16. We do not knowingly collect data from minors.</p>
-            
-            <h3>8. International Data Transfers</h3>
-            <p>Data may be processed in the US, EU, or other jurisdictions. We implement Standard Contractual Clauses (SCCs) for international transfers.</p>
-            
-            <h3>9. Changes to This Policy</h3>
-            <p>We may update this Privacy Policy periodically. Material changes will be notified via email or on our website.</p>
-            
-            <p><strong>Contact Us:</strong> Data Protection Officer at <strong>dpo@prisma.ai</strong> or mail: Prisma AI, 101 Decision Way, San Francisco, CA 94105.</p>
-            <p style="margin-top: 1rem;"><i class="fas fa-check-circle" style="color: var(--peach);"></i> Prisma AI — intelligence that acts.</p>
-        </div>
-    </div>
-</main>
+</div>
 
-<!-- Footer -->
+</section>
+
+<section class="section" id="features">
+
+<div class="container">
+
+<h2 class="title">AI Platform Features</h2>
+
+<p class="subtitle">
+Advanced artificial intelligence architecture designed for automation,
+predictive analytics,
+distributed neural systems,
+and enterprise cloud environments.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Neural Processing</h3>
+<p>
+Transformer-powered neural systems optimized for contextual reasoning,
+language understanding,
+and intelligent automation operations.
+</p>
+</div>
+
+<div class="card">
+<h3>AI Automation</h3>
+<p>
+Autonomous workflow environments engineered for scalable digital operations,
+infrastructure orchestration,
+and realtime optimization.
+</p>
+</div>
+
+<div class="card">
+<h3>Predictive Intelligence</h3>
+<p>
+Realtime machine learning models generating forecasting analytics,
+behavioral insights,
+and adaptive optimization systems.
+</p>
+</div>
+
+<div class="card">
+<h3>Vision Networks</h3>
+<p>
+Integrated AI vision systems supporting OCR processing,
+object detection,
+and intelligent visual analysis.
+</p>
+</div>
+
+<div class="card">
+<h3>Security Infrastructure</h3>
+<p>
+Encrypted AI environments with anomaly detection,
+behavioral monitoring,
+and enterprise-grade protection layers.
+</p>
+</div>
+
+<div class="card">
+<h3>Cloud Intelligence</h3>
+<p>
+Global deployment architecture with edge optimization,
+distributed AI nodes,
+and scalable compute environments.
+</p>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<h2>18B+</h2>
+<p>Neural Operations</p>
+</div>
+
+<div class="stat">
+<h2>99.99%</h2>
+<p>Platform Stability</p>
+</div>
+
+<div class="stat">
+<h2>260+</h2>
+<p>AI Infrastructure Nodes</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>Realtime Monitoring</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="infrastructure">
+
+<div class="container">
+
+<h2 class="title">Infrastructure Systems</h2>
+
+<p class="subtitle">
+High-performance neural compute systems,
+distributed edge environments,
+and enterprise-grade AI cloud deployment.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>GPU Acceleration</h3>
+<p>
+Advanced hardware acceleration systems designed for deep learning,
+large-scale neural processing,
+and realtime AI inference.
+</p>
+</div>
+
+<div class="card">
+<h3>Edge Deployment</h3>
+<p>
+Low-latency edge infrastructure enabling intelligent processing
+across distributed global networks.
+</p>
+</div>
+
+<div class="card">
+<h3>Enterprise APIs</h3>
+<p>
+Scalable API environments supporting automation pipelines,
+AI integrations,
+and adaptive cloud infrastructure.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="roadmap">
+
+<div class="container">
+
+<h2 class="title">Development Roadmap</h2>
+
+<p class="subtitle">
+Continuous AI innovation focused on autonomous systems,
+machine intelligence,
+and scalable neural ecosystems.
+</p>
+
+<div class="timeline">
+
+<div class="step">
+<h4>Phase 1 — Core Infrastructure</h4>
+<p>
+Launch of scalable transformer systems
+and distributed AI automation environments.
+</p>
+</div>
+
+<div class="step">
+<h4>Phase 2 — Global Expansion</h4>
+<p>
+Deployment of edge intelligence systems
+across worldwide infrastructure networks.
+</p>
+</div>
+
+<div class="step">
+<h4>Phase 3 — Autonomous Intelligence</h4>
+<p>
+Adaptive neural reasoning systems
+with predictive optimization capabilities.
+</p>
+</div>
+
+<div class="step">
+<h4>Phase 4 — Quantum AI</h4>
+<p>
+Research and development of quantum-enhanced
+artificial intelligence environments.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="policies">
+
+<div class="container">
+
+<h2 class="title">Privacy & Policies</h2>
+
+<div class="policy">
+
+<h3>Privacy Policy</h3>
+
+<p>
+NovaCircuit AI may collect anonymous analytics,
+performance diagnostics,
+and infrastructure monitoring information
+to improve service reliability and platform optimization.
+</p>
+
+<p>
+All user interactions are protected through encrypted environments,
+secure cloud systems,
+and restricted infrastructure access controls.
+</p>
+
+<p>
+Users may request access,
+modification,
+or deletion of stored data
+where permitted under regional compliance standards.
+</p>
+
+</div>
+
+<div class="policy">
+
+<h3>Cookie Policy</h3>
+
+<p>
+This website uses cookies and local storage technologies
+to improve navigation,
+optimize functionality,
+and support analytics systems.
+</p>
+
+<p>
+By continuing to use this platform,
+users consent to the use of cookies
+under the terms described within this policy.
+</p>
+
+</div>
+
+<div class="policy">
+
+<h3>Terms of Service</h3>
+
+<p>
+Users agree not to misuse platform services,
+attempt unauthorized access,
+or interfere with infrastructure operations.
+</p>
+
+<p>
+NovaCircuit AI reserves the right
+to modify infrastructure,
+services,
+and legal documentation without prior notice.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
 <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div><h4>Prisma<span style="color:#f97316;">AI</span></h4><p>Decision intelligence</p><div>© 2025</div></div>
-            <div><h4>Product</h4><a href="#solutions">Solutions</a><a href="#pricing">Pricing</a><a href="#">API</a><a href="#">Status</a></div>
-            <div><h4>Resources</h4><a href="#blog">Blog</a><a href="#">Docs</a><a href="#">Support</a><a href="#">Community</a></div>
-            <div><h4>Legal</h4><a href="#privacy">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">Compliance</a></div>
-        </div>
-        <div style="border-top: 1px solid #334155; padding-top: 1.5rem; text-align: center; font-size: 0.75rem;">
-            Prescriptive intelligence for the enterprise. Trusted worldwide.
-        </div>
-    </div>
+
+<div class="footer-grid">
+
+<div>
+<h4>NovaCircuit AI</h4>
+<p>
+Enterprise artificial intelligence infrastructure
+for scalable digital ecosystems.
+</p>
+</div>
+
+<div>
+<h4>Navigation</h4>
+<p><a href="#features">Features</a></p>
+<p><a href="#infrastructure">Infrastructure</a></p>
+<p><a href="#roadmap">Roadmap</a></p>
+</div>
+
+<div>
+<h4>Legal</h4>
+<p><a href="#policies">Privacy Policy</a></p>
+<p><a href="#policies">Cookie Policy</a></p>
+<p><a href="#policies">Terms of Service</a></p>
+</div>
+
+<div>
+<h4>Technology</h4>
+<p>Neural Networks</p>
+<p>Machine Learning</p>
+<p>AI Automation</p>
+<p>Cloud Intelligence</p>
+</div>
+
+</div>
+
+<div class="bottom">
+© 2026 NovaCircuit AI. All rights reserved.
+</div>
+
 </footer>
 
-<a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+<div class="cookie" id="cookieBox">
+
+<div>
+<strong>Cookie Notice</strong><br>
+This website uses cookies and analytics technologies
+to improve platform functionality and user experience.
+</div>
+
+<button onclick="acceptCookies()">Accept</button>
+
+</div>
 
 <script>
-    // Preloader: white screen for 0.8 seconds
-    window.addEventListener('load', function() {
-        const preloader = document.getElementById('preloader');
-        const body = document.body;
-        
-        setTimeout(function() {
-            preloader.classList.add('hidden');
-            body.classList.add('loaded');
-            
-            setTimeout(function() {
-                preloader.style.display = 'none';
-            }, 300);
-        }, 800);
-    });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("preloader").classList.add("hide");
+
+},800);
+
+});
+
+function acceptCookies(){
+
+document.getElementById("cookieBox").style.display="none";
+
+localStorage.setItem("cookiesAccepted","yes");
+
+}
+
+window.addEventListener("load",()=>{
+
+if(localStorage.getItem("cookiesAccepted")==="yes"){
+
+document.getElementById("cookieBox").style.display="none";
+
+}
+
+});
+
 </script>
 
-<!-- Protection script (external) -->
 <script src="protection.js"></script>
 
 </body>
