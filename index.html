@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NovaCircuit AI — Neural Intelligence Platform</title>
+<title>AETHER MIND — AI Operating System</title>
 
-<meta name="description" content="NovaCircuit AI builds next-generation artificial intelligence systems, neural cloud infrastructure, autonomous machine learning, and intelligent automation platforms.">
+<meta name="description" content="Aether Mind is a next-generation AI operating environment for neural automation, intelligent infrastructure, cloud systems, and enterprise machine intelligence.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,39 +19,57 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
+
+html{
 scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#04060d;
-color:#fff;
+font-family:'Manrope',sans-serif;
+background:#fffaf7;
+color:#181818;
 overflow-x:hidden;
 }
+
+/* PRELOADER */
 
 #preloader{
 position:fixed;
 inset:0;
-background:#fff;
+background:#ffd7bf;
 display:flex;
-align-items:center;
 justify-content:center;
-z-index:99999;
+align-items:center;
+z-index:999999;
 transition:.6s;
 }
 
-.loader{
-width:100px;
-height:100px;
-border-radius:50%;
-border:6px solid rgba(0,0,0,.08);
-border-top:6px solid #000;
-animation:spin 1s linear infinite;
+.loader-box{
+display:flex;
+gap:14px;
 }
 
-@keyframes spin{
+.loader-box span{
+width:18px;
+height:18px;
+border-radius:50%;
+background:#fff;
+animation:bounce .8s infinite alternate;
+}
+
+.loader-box span:nth-child(2){
+animation-delay:.2s;
+}
+
+.loader-box span:nth-child(3){
+animation-delay:.4s;
+}
+
+@keyframes bounce{
 100%{
-transform:rotate(360deg);
+transform:translateY(-16px);
+opacity:.5;
 }
 }
 
@@ -55,119 +78,142 @@ opacity:0;
 visibility:hidden;
 }
 
-header{
+/* BACKGROUND ELEMENTS */
+
+.blur{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:999;
-background:rgba(0,0,0,.48);
-backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.06);
+width:700px;
+height:700px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(255,173,130,.22), transparent 70%);
+top:-300px;
+right:-300px;
+z-index:-1;
+filter:blur(50px);
 }
 
-nav{
-max-width:1400px;
-margin:auto;
-padding:22px 30px;
+.blur2{
+position:fixed;
+width:650px;
+height:650px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(255,210,185,.25), transparent 70%);
+bottom:-250px;
+left:-250px;
+z-index:-1;
+filter:blur(50px);
+}
+
+/* HEADER */
+
+header{
+padding:26px 7%;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+background:rgba(255,250,247,.85);
+backdrop-filter:blur(14px);
+z-index:999;
+border-bottom:1px solid rgba(0,0,0,.05);
 }
 
 .logo{
-font-size:31px;
-font-weight:900;
+font-size:28px;
+font-weight:800;
 letter-spacing:1px;
 }
 
 .logo span{
-color:#77e8ff;
+color:#ff9b69;
 }
 
-.menu{
+nav{
 display:flex;
-gap:30px;
+gap:28px;
 }
 
-.menu a{
-color:#fff;
+nav a{
 text-decoration:none;
-opacity:.72;
-transition:.3s;
+color:#181818;
 font-size:14px;
+font-weight:600;
+opacity:.7;
+transition:.2s;
 }
 
-.menu a:hover{
+nav a:hover{
 opacity:1;
-color:#77e8ff;
 }
+
+/* SPLIT HERO */
 
 .hero{
-min-height:100vh;
-display:flex;
+padding:90px 7% 100px;
+display:grid;
+grid-template-columns:.9fr 1.1fr;
+gap:70px;
 align-items:center;
-justify-content:center;
-text-align:center;
-padding:150px 20px 100px;
-background:
-radial-gradient(circle at top left,#10284a 0%,transparent 32%),
-radial-gradient(circle at bottom right,#0a3144 0%,transparent 34%),
-#04060d;
-position:relative;
-overflow:hidden;
+min-height:100vh;
 }
 
-.hero::before{
-content:"";
-position:absolute;
-width:900px;
-height:900px;
-background:radial-gradient(circle,#77e8ff18,transparent 70%);
-filter:blur(100px);
-top:-350px;
-right:-350px;
+.left-column{
+display:flex;
+flex-direction:column;
+gap:28px;
 }
 
-.hero-content{
-max-width:1150px;
-position:relative;
-z-index:2;
+.tag{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:10px 16px;
+background:#fff;
+border-radius:999px;
+width:max-content;
+box-shadow:0 8px 25px rgba(0,0,0,.05);
+font-size:14px;
+font-weight:700;
+}
+
+.dot{
+width:10px;
+height:10px;
+border-radius:50%;
+background:#ff9b69;
 }
 
 .hero h1{
-font-size:84px;
-line-height:1;
-margin-bottom:30px;
-font-weight:900;
+font-size:92px;
+line-height:.92;
+font-weight:800;
 }
 
 .hero p{
-font-size:21px;
-line-height:1.8;
-opacity:.78;
-max-width:860px;
-margin:auto auto 45px;
+font-size:18px;
+line-height:1.9;
+opacity:.7;
+max-width:620px;
 }
 
-.buttons{
+.hero-buttons{
 display:flex;
-justify-content:center;
 gap:18px;
 flex-wrap:wrap;
 }
 
 .btn{
-padding:17px 34px;
-border-radius:14px;
+padding:18px 30px;
+border-radius:18px;
 font-weight:700;
 text-decoration:none;
-transition:.35s;
+transition:.3s;
 }
 
 .primary{
-background:#fff;
-color:#000;
+background:#181818;
+color:#fff;
 }
 
 .primary:hover{
@@ -175,184 +221,356 @@ transform:translateY(-5px);
 }
 
 .secondary{
-border:1px solid rgba(255,255,255,.15);
-color:#fff;
+background:#fff;
+color:#181818;
+box-shadow:0 8px 25px rgba(0,0,0,.06);
 }
 
 .secondary:hover{
-background:#fff;
-color:#000;
+background:#ffe8db;
 }
 
-.section{
-padding:110px 20px;
-}
+/* RIGHT PANEL */
 
-.container{
-max-width:1350px;
-margin:auto;
-}
-
-.title{
-font-size:56px;
-text-align:center;
-margin-bottom:20px;
-font-weight:900;
-}
-
-.subtitle{
-max-width:860px;
-margin:auto auto 70px;
-text-align:center;
-opacity:.72;
-line-height:1.8;
-font-size:18px;
-}
-
-.grid{
+.right-column{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+grid-template-columns:repeat(2,1fr);
+gap:22px;
+}
+
+.widget{
+background:#fff;
+border-radius:28px;
+padding:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.06);
+min-height:220px;
+position:relative;
+overflow:hidden;
+}
+
+.widget::before{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:radial-gradient(circle, rgba(255,180,140,.18), transparent 70%);
+top:-80px;
+right:-80px;
+}
+
+.widget h3{
+font-size:20px;
+margin-bottom:14px;
+position:relative;
+z-index:2;
+}
+
+.widget p{
+line-height:1.8;
+opacity:.7;
+position:relative;
+z-index:2;
+}
+
+.big{
+font-size:54px;
+font-weight:800;
+margin-top:20px;
+position:relative;
+z-index:2;
+}
+
+.chart{
+margin-top:18px;
+height:100px;
+border-radius:18px;
+background:
+linear-gradient(180deg, rgba(255,180,140,.2), transparent),
+#fff4ee;
+position:relative;
+overflow:hidden;
+}
+
+.chart-line{
+position:absolute;
+left:10px;
+right:10px;
+bottom:24px;
+height:4px;
+background:#ff9b69;
+transform:skewY(-7deg);
+border-radius:999px;
+animation:wave 3s infinite alternate;
+}
+
+@keyframes wave{
+100%{
+transform:skewY(-2deg) translateY(-16px);
+}
+}
+
+/* MARQUEE */
+
+.marquee{
+overflow:hidden;
+padding:24px 0;
+border-top:1px solid rgba(0,0,0,.05);
+border-bottom:1px solid rgba(0,0,0,.05);
+background:#fff;
+}
+
+.track{
+display:flex;
+gap:80px;
+white-space:nowrap;
+animation:scroll 22s linear infinite;
+font-size:20px;
+font-weight:700;
+opacity:.75;
+}
+
+@keyframes scroll{
+100%{
+transform:translateX(-50%);
+}
+}
+
+/* STACKED SECTION */
+
+.stack{
+padding:120px 7%;
+display:flex;
+flex-direction:column;
 gap:28px;
 }
 
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:28px;
+}
+
+.block{
+background:#fff;
+padding:45px;
+border-radius:34px;
+box-shadow:0 25px 70px rgba(0,0,0,.05);
+}
+
+.block h2{
+font-size:46px;
+margin-bottom:18px;
+}
+
+.block p{
+line-height:1.9;
+opacity:.72;
+margin-bottom:24px;
+}
+
+.mini-list{
+display:flex;
+flex-direction:column;
+gap:16px;
+}
+
+.item{
+padding:18px 20px;
+border-radius:18px;
+background:#fff4ee;
+font-weight:600;
+}
+
+/* SHOWCASE */
+
+.showcase{
+padding:120px 7%;
+}
+
+.showcase-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:50px;
+}
+
 .card{
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.07);
-border-radius:28px;
-padding:36px;
-transition:.35s;
+background:#fff;
+padding:34px;
+border-radius:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.05);
+transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-border-color:#77e8ff55;
-background:rgba(255,255,255,.05);
 }
 
 .card h3{
-font-size:24px;
-margin-bottom:18px;
+font-size:28px;
+margin-bottom:16px;
 }
 
 .card p{
-opacity:.74;
-line-height:1.8;
-}
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:24px;
-margin-top:70px;
-}
-
-.stat{
-background:#08101a;
-padding:38px;
-border-radius:24px;
-text-align:center;
-border:1px solid rgba(255,255,255,.05);
-}
-
-.stat h2{
-font-size:56px;
-margin-bottom:12px;
-color:#77e8ff;
-}
-
-.timeline{
-display:flex;
-flex-direction:column;
-gap:28px;
-max-width:920px;
-margin:auto;
-}
-
-.step{
-background:#08101a;
-padding:32px;
-border-left:3px solid #77e8ff;
-border-radius:20px;
-}
-
-.step h4{
-font-size:24px;
-margin-bottom:12px;
-}
-
-.step p{
-opacity:.74;
-line-height:1.8;
-}
-
-.policy{
-background:#08101a;
-padding:42px;
-border-radius:28px;
-border:1px solid rgba(255,255,255,.06);
-margin-top:40px;
-}
-
-.policy h3{
-font-size:28px;
+line-height:1.9;
+opacity:.72;
 margin-bottom:20px;
 }
 
-.policy p{
-opacity:.74;
+.card ul{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.card li{
+opacity:.72;
+}
+
+/* TESTIMONIAL */
+
+.testimonial{
+padding:120px 7%;
+}
+
+.quote{
+background:#181818;
+color:#fff;
+padding:60px;
+border-radius:40px;
+position:relative;
+overflow:hidden;
+}
+
+.quote::before{
+content:"“";
+position:absolute;
+font-size:220px;
+opacity:.06;
+top:-60px;
+left:20px;
+}
+
+.quote h2{
+font-size:42px;
+line-height:1.4;
+max-width:1000px;
+margin-bottom:30px;
+position:relative;
+z-index:2;
+}
+
+.author{
+opacity:.72;
+position:relative;
+z-index:2;
+}
+
+/* FAQ */
+
+.faq{
+padding:120px 7%;
+display:flex;
+flex-direction:column;
+gap:24px;
+}
+
+.faq-item{
+background:#fff;
+padding:34px;
+border-radius:26px;
+box-shadow:0 15px 45px rgba(0,0,0,.05);
+}
+
+.faq-item h4{
+font-size:24px;
+margin-bottom:14px;
+}
+
+.faq-item p{
 line-height:1.9;
+opacity:.72;
+}
+
+/* LEGAL */
+
+.legal{
+padding:120px 7%;
+background:#fff;
+}
+
+.legal-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-top:50px;
+}
+
+.legal-box{
+padding:38px;
+border-radius:28px;
+background:#fff4ee;
+}
+
+.legal-box h3{
+font-size:28px;
 margin-bottom:18px;
 }
 
+.legal-box p{
+line-height:1.9;
+opacity:.72;
+margin-bottom:14px;
+}
+
+/* FOOTER */
+
 footer{
-padding:90px 20px 40px;
-background:#010203;
-border-top:1px solid rgba(255,255,255,.06);
+padding:90px 7% 40px;
+background:#181818;
+color:#fff;
 }
 
 .footer-grid{
-max-width:1300px;
-margin:auto;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:40px;
 }
 
 footer h4{
-font-size:20px;
 margin-bottom:18px;
+font-size:20px;
 }
 
-footer p,
-footer a{
-color:#fff;
-opacity:.7;
-line-height:1.9;
+footer a,
+footer p{
+display:block;
 text-decoration:none;
-}
-
-footer a:hover{
-opacity:1;
+color:#fff;
+opacity:.72;
+line-height:2;
 }
 
 .bottom{
-margin-top:60px;
+margin-top:50px;
 padding-top:24px;
-border-top:1px solid rgba(255,255,255,.06);
+border-top:1px solid rgba(255,255,255,.08);
 text-align:center;
-opacity:.5;
-font-size:14px;
+opacity:.45;
 }
+
+/* COOKIE */
 
 .cookie{
 position:fixed;
-left:25px;
-right:25px;
-bottom:25px;
-background:#0c121b;
+left:20px;
+right:20px;
+bottom:20px;
+background:#181818;
+color:#fff;
 padding:22px;
 border-radius:24px;
-border:1px solid rgba(255,255,255,.08);
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -361,26 +579,52 @@ z-index:9999;
 }
 
 .cookie button{
-background:#fff;
+padding:14px 20px;
 border:none;
-padding:14px 22px;
-border-radius:12px;
+background:#ff9b69;
+color:#fff;
+border-radius:14px;
 font-weight:700;
 cursor:pointer;
 }
 
-@media(max-width:900px){
+/* RESPONSIVE */
+
+@media(max-width:1150px){
+
+.hero,
+.row,
+.showcase-grid,
+.legal-grid{
+grid-template-columns:1fr;
+}
 
 .hero h1{
-font-size:50px;
+font-size:68px;
 }
 
-.title{
-font-size:40px;
+.right-column{
+grid-template-columns:1fr;
 }
 
-.menu{
+}
+
+@media(max-width:760px){
+
+nav{
 display:none;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.block h2{
+font-size:34px;
+}
+
+.quote h2{
+font-size:30px;
 }
 
 .cookie{
@@ -396,144 +640,194 @@ align-items:flex-start;
 <body>
 
 <div id="preloader">
-<div class="loader"></div>
+<div class="loader-box">
+<span></span>
+<span></span>
+<span></span>
 </div>
+</div>
+
+<div class="blur"></div>
+<div class="blur2"></div>
 
 <header>
 
-<nav>
-
 <div class="logo">
-Nova<span>Circuit</span>
+AETHER<span>MIND</span>
 </div>
 
-<div class="menu">
-<a href="#features">Features</a>
-<a href="#infrastructure">Infrastructure</a>
-<a href="#roadmap">Roadmap</a>
-<a href="#policies">Policies</a>
-</div>
-
+<nav>
+<a href="#systems">Systems</a>
+<a href="#products">Products</a>
+<a href="#faq">FAQ</a>
+<a href="#legal">Policies</a>
 </nav>
 
 </header>
 
 <section class="hero">
 
-<div class="hero-content">
+<div class="left-column">
+
+<div class="tag">
+<div class="dot"></div>
+AI Infrastructure Online
+</div>
 
 <h1>
-Neural Intelligence<br>
-For Modern Systems
+AI Operating<br>
+System For<br>
+Modern Enterprises
 </h1>
 
 <p>
-NovaCircuit AI develops scalable neural infrastructures,
-enterprise-grade automation systems,
-machine learning ecosystems,
-and next-generation artificial intelligence platforms.
+Aether Mind combines neural automation,
+predictive intelligence,
+distributed cloud systems,
+and enterprise-scale AI infrastructure into a unified operating environment.
 </p>
 
-<div class="buttons">
-<a href="#" class="btn primary">Launch AI Platform</a>
-<a href="#features" class="btn secondary">Explore Features</a>
+<div class="hero-buttons">
+
+<a href="#" class="btn primary">Launch Platform</a>
+
+<a href="#products" class="btn secondary">Explore Products</a>
+
+</div>
+
+</div>
+
+<div class="right-column">
+
+<div class="widget">
+<h3>Realtime Inference</h3>
+<div class="big">8ms</div>
+<div class="chart">
+<div class="chart-line"></div>
+</div>
+</div>
+
+<div class="widget">
+<h3>AI Cloud Nodes</h3>
+<div class="big">628</div>
+<p>
+Distributed global infrastructure optimized for intelligent workloads.
+</p>
+</div>
+
+<div class="widget">
+<h3>Neural Requests</h3>
+<div class="big">15.4M</div>
+<p>
+Realtime machine intelligence processing across enterprise environments.
+</p>
+</div>
+
+<div class="widget">
+<h3>Automation Stability</h3>
+<div class="big">99.99%</div>
+<p>
+Continuous infrastructure monitoring and intelligent optimization systems.
+</p>
 </div>
 
 </div>
 
 </section>
 
-<section class="section" id="features">
+<section class="marquee">
+<div class="track">
+<span>Neural Infrastructure</span>
+<span>Predictive AI</span>
+<span>Realtime Automation</span>
+<span>Enterprise Cloud</span>
+<span>Distributed Intelligence</span>
+<span>Computer Vision</span>
+<span>Machine Learning</span>
+<span>Neural Infrastructure</span>
+<span>Predictive AI</span>
+<span>Realtime Automation</span>
+</div>
+</section>
 
-<div class="container">
+<section class="stack" id="systems">
 
-<h2 class="title">AI Platform Features</h2>
+<div class="row">
 
-<p class="subtitle">
-Advanced artificial intelligence architecture designed for automation,
+<div class="block">
+
+<h2>
+Enterprise Neural Systems
+</h2>
+
+<p>
+Advanced transformer-based reasoning systems optimized for automation,
 predictive analytics,
-distributed neural systems,
-and enterprise cloud environments.
+and intelligent cloud operations.
 </p>
 
-<div class="grid">
+<div class="mini-list">
+<div class="item">Realtime neural processing</div>
+<div class="item">Scalable AI deployment</div>
+<div class="item">GPU accelerated infrastructure</div>
+</div>
 
-<div class="card">
-<h3>Neural Processing</h3>
+</div>
+
+<div class="block">
+
+<h2>
+Distributed AI Cloud
+</h2>
+
 <p>
-Transformer-powered neural systems optimized for contextual reasoning,
-language understanding,
-and intelligent automation operations.
+Global edge infrastructure designed for low-latency machine intelligence and enterprise automation environments.
 </p>
+
+<div class="mini-list">
+<div class="item">Global cloud orchestration</div>
+<div class="item">Edge intelligence systems</div>
+<div class="item">Adaptive infrastructure scaling</div>
 </div>
 
-<div class="card">
-<h3>AI Automation</h3>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="block">
+
+<h2>
+Security Intelligence
+</h2>
+
 <p>
-Autonomous workflow environments engineered for scalable digital operations,
-infrastructure orchestration,
-and realtime optimization.
+Encrypted AI ecosystems with adaptive anomaly detection and intelligent infrastructure monitoring.
 </p>
+
+<div class="mini-list">
+<div class="item">Behavior analysis systems</div>
+<div class="item">AI-driven threat detection</div>
+<div class="item">Encrypted infrastructure layers</div>
 </div>
 
-<div class="card">
-<h3>Predictive Intelligence</h3>
+</div>
+
+<div class="block">
+
+<h2>
+Predictive Analytics
+</h2>
+
 <p>
-Realtime machine learning models generating forecasting analytics,
-behavioral insights,
-and adaptive optimization systems.
+Machine learning forecasting systems built for enterprise optimization and intelligent decision modeling.
 </p>
-</div>
 
-<div class="card">
-<h3>Vision Networks</h3>
-<p>
-Integrated AI vision systems supporting OCR processing,
-object detection,
-and intelligent visual analysis.
-</p>
-</div>
-
-<div class="card">
-<h3>Security Infrastructure</h3>
-<p>
-Encrypted AI environments with anomaly detection,
-behavioral monitoring,
-and enterprise-grade protection layers.
-</p>
-</div>
-
-<div class="card">
-<h3>Cloud Intelligence</h3>
-<p>
-Global deployment architecture with edge optimization,
-distributed AI nodes,
-and scalable compute environments.
-</p>
-</div>
-
-</div>
-
-<div class="stats">
-
-<div class="stat">
-<h2>18B+</h2>
-<p>Neural Operations</p>
-</div>
-
-<div class="stat">
-<h2>99.99%</h2>
-<p>Platform Stability</p>
-</div>
-
-<div class="stat">
-<h2>260+</h2>
-<p>AI Infrastructure Nodes</p>
-</div>
-
-<div class="stat">
-<h2>24/7</h2>
-<p>Realtime Monitoring</p>
+<div class="mini-list">
+<div class="item">Realtime forecasting</div>
+<div class="item">Behavior prediction</div>
+<div class="item">Adaptive optimization models</div>
 </div>
 
 </div>
@@ -542,45 +836,66 @@ and scalable compute environments.
 
 </section>
 
-<section class="section" id="infrastructure">
+<section class="showcase" id="products">
 
-<div class="container">
+<h2 style="font-size:68px;text-align:center;">
+AI Product Ecosystem
+</h2>
 
-<h2 class="title">Infrastructure Systems</h2>
-
-<p class="subtitle">
-High-performance neural compute systems,
-distributed edge environments,
-and enterprise-grade AI cloud deployment.
+<p style="text-align:center;max-width:850px;margin:24px auto 0;line-height:1.9;opacity:.72;font-size:18px;">
+Integrated AI systems engineered for scalable enterprise intelligence and automation.
 </p>
 
-<div class="grid">
+<div class="showcase-grid">
 
 <div class="card">
-<h3>GPU Acceleration</h3>
+
+<h3>AETHER CORE</h3>
+
 <p>
-Advanced hardware acceleration systems designed for deep learning,
-large-scale neural processing,
-and realtime AI inference.
+Enterprise neural processing environment optimized for intelligent automation workloads.
 </p>
+
+<ul>
+<li>✔ Neural inference engine</li>
+<li>✔ Distributed processing</li>
+<li>✔ GPU acceleration</li>
+<li>✔ Enterprise APIs</li>
+</ul>
+
 </div>
 
 <div class="card">
-<h3>Edge Deployment</h3>
+
+<h3>VISION GRID</h3>
+
 <p>
-Low-latency edge infrastructure enabling intelligent processing
-across distributed global networks.
+Advanced computer vision systems for realtime image recognition and AI monitoring.
 </p>
+
+<ul>
+<li>✔ OCR processing</li>
+<li>✔ Object detection</li>
+<li>✔ Vision analytics</li>
+<li>✔ AI recognition systems</li>
+</ul>
+
 </div>
 
 <div class="card">
-<h3>Enterprise APIs</h3>
+
+<h3>NEURAL FLOW</h3>
+
 <p>
-Scalable API environments supporting automation pipelines,
-AI integrations,
-and adaptive cloud infrastructure.
+Autonomous cloud orchestration systems with intelligent infrastructure management.
 </p>
-</div>
+
+<ul>
+<li>✔ Infrastructure automation</li>
+<li>✔ Edge AI deployment</li>
+<li>✔ Realtime analytics</li>
+<li>✔ Predictive optimization</li>
+</ul>
 
 </div>
 
@@ -588,124 +903,110 @@ and adaptive cloud infrastructure.
 
 </section>
 
-<section class="section" id="roadmap">
+<section class="testimonial">
 
-<div class="container">
+<div class="quote">
 
-<h2 class="title">Development Roadmap</h2>
+<h2>
+“Aether Mind completely transformed the way our infrastructure handles automation,
+predictive intelligence,
+and enterprise-scale machine learning systems.”
+</h2>
 
-<p class="subtitle">
-Continuous AI innovation focused on autonomous systems,
+<div class="author">
+— Enterprise Systems Director, Global Technology Group
+</div>
+
+</div>
+
+</section>
+
+<section class="faq" id="faq">
+
+<div class="faq-item">
+<h4>What is Aether Mind?</h4>
+<p>
+Aether Mind is an AI operating environment designed for enterprise automation,
 machine intelligence,
-and scalable neural ecosystems.
+cloud orchestration,
+and predictive analytics systems.
 </p>
+</div>
 
-<div class="timeline">
-
-<div class="step">
-<h4>Phase 1 — Core Infrastructure</h4>
+<div class="faq-item">
+<h4>Does the platform support enterprise infrastructure?</h4>
 <p>
-Launch of scalable transformer systems
-and distributed AI automation environments.
+Yes,
+the platform is optimized for scalable enterprise workloads and distributed AI cloud environments.
 </p>
 </div>
 
-<div class="step">
-<h4>Phase 2 — Global Expansion</h4>
+<div class="faq-item">
+<h4>How secure is the ecosystem?</h4>
 <p>
-Deployment of edge intelligence systems
-across worldwide infrastructure networks.
+Aether Mind uses encrypted infrastructure,
+adaptive AI monitoring,
+and anomaly detection technologies for system protection.
 </p>
-</div>
-
-<div class="step">
-<h4>Phase 3 — Autonomous Intelligence</h4>
-<p>
-Adaptive neural reasoning systems
-with predictive optimization capabilities.
-</p>
-</div>
-
-<div class="step">
-<h4>Phase 4 — Quantum AI</h4>
-<p>
-Research and development of quantum-enhanced
-artificial intelligence environments.
-</p>
-</div>
-
-</div>
-
 </div>
 
 </section>
 
-<section class="section" id="policies">
+<section class="legal" id="legal">
 
-<div class="container">
+<h2 style="font-size:68px;text-align:center;">
+Legal Information
+</h2>
 
-<h2 class="title">Privacy & Policies</h2>
+<div class="legal-grid">
 
-<div class="policy">
+<div class="legal-box">
 
 <h3>Privacy Policy</h3>
 
 <p>
-NovaCircuit AI may collect anonymous analytics,
+Aether Mind may collect anonymous analytics,
 performance diagnostics,
-and infrastructure monitoring information
-to improve service reliability and platform optimization.
+and infrastructure metrics to improve platform stability and optimization.
 </p>
 
 <p>
-All user interactions are protected through encrypted environments,
-secure cloud systems,
-and restricted infrastructure access controls.
-</p>
-
-<p>
-Users may request access,
-modification,
-or deletion of stored data
-where permitted under regional compliance standards.
+User data is protected using encrypted infrastructure and access control systems.
 </p>
 
 </div>
 
-<div class="policy">
+<div class="legal-box">
 
 <h3>Cookie Policy</h3>
 
 <p>
-This website uses cookies and local storage technologies
-to improve navigation,
-optimize functionality,
-and support analytics systems.
+This platform uses cookies and local storage technologies for authentication,
+session management,
+analytics,
+and infrastructure optimization.
 </p>
 
 <p>
-By continuing to use this platform,
-users consent to the use of cookies
-under the terms described within this policy.
+Continued usage of the platform constitutes agreement with this policy.
 </p>
 
 </div>
 
-<div class="policy">
+<div class="legal-box">
 
-<h3>Terms of Service</h3>
+<h3>Terms Of Service</h3>
 
 <p>
-Users agree not to misuse platform services,
+Users agree not to misuse the platform,
 attempt unauthorized access,
-or interfere with infrastructure operations.
+or disrupt system operations.
 </p>
 
 <p>
-NovaCircuit AI reserves the right
-to modify infrastructure,
+The company reserves the right to modify infrastructure,
 services,
-and legal documentation without prior notice.
+and policies at any time.
 </p>
 
 </div>
@@ -719,39 +1020,39 @@ and legal documentation without prior notice.
 <div class="footer-grid">
 
 <div>
-<h4>NovaCircuit AI</h4>
+<h4>AETHER MIND</h4>
 <p>
-Enterprise artificial intelligence infrastructure
-for scalable digital ecosystems.
+AI operating systems engineered for enterprise-scale machine intelligence environments.
 </p>
 </div>
 
 <div>
 <h4>Navigation</h4>
-<p><a href="#features">Features</a></p>
-<p><a href="#infrastructure">Infrastructure</a></p>
-<p><a href="#roadmap">Roadmap</a></p>
-</div>
-
-<div>
-<h4>Legal</h4>
-<p><a href="#policies">Privacy Policy</a></p>
-<p><a href="#policies">Cookie Policy</a></p>
-<p><a href="#policies">Terms of Service</a></p>
+<a href="#systems">Systems</a>
+<a href="#products">Products</a>
+<a href="#faq">FAQ</a>
+<a href="#legal">Policies</a>
 </div>
 
 <div>
 <h4>Technology</h4>
-<p>Neural Networks</p>
-<p>Machine Learning</p>
-<p>AI Automation</p>
-<p>Cloud Intelligence</p>
+<p>Neural Infrastructure</p>
+<p>Computer Vision</p>
+<p>Automation Systems</p>
+<p>Predictive Analytics</p>
+</div>
+
+<div>
+<h4>Legal</h4>
+<p>
+This platform may use cookies and anonymous analytics technologies for infrastructure optimization and security improvements.
+</p>
 </div>
 
 </div>
 
 <div class="bottom">
-© 2026 NovaCircuit AI. All rights reserved.
+© 2026 AETHER MIND. All rights reserved.
 </div>
 
 </footer>
@@ -760,8 +1061,7 @@ for scalable digital ecosystems.
 
 <div>
 <strong>Cookie Notice</strong><br>
-This website uses cookies and analytics technologies
-to improve platform functionality and user experience.
+We use cookies and anonymous analytics technologies to improve system functionality and infrastructure stability.
 </div>
 
 <button onclick="acceptCookies()">Accept</button>
@@ -784,13 +1084,13 @@ function acceptCookies(){
 
 document.getElementById("cookieBox").style.display="none";
 
-localStorage.setItem("cookiesAccepted","yes");
+localStorage.setItem("aether_cookie","1");
 
 }
 
 window.addEventListener("load",()=>{
 
-if(localStorage.getItem("cookiesAccepted")==="yes"){
+if(localStorage.getItem("aether_cookie")==="1"){
 
 document.getElementById("cookieBox").style.display="none";
 
